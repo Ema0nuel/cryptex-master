@@ -42,6 +42,8 @@ document.getElementById("submitSignUp").addEventListener("click", (e) => {
   const password = document.getElementById("rPassword").value;
   const firstName = document.getElementById("lName").value;
   const lastName = document.getElementById("fName").value;
+  const wallet = document.getElementById("rWallet").value;
+  const currency = document.getElementById("rCurrency").value;
 
   const auth = getAuth();
   const db = getFirestore();
@@ -54,6 +56,8 @@ document.getElementById("submitSignUp").addEventListener("click", (e) => {
             email,
             firstName,
             lastName,
+            wallet,
+            currency,
         }
         showMessage("Account Created Successfully", "signUpMessage")
         const docRef = doc(db, "users", user.uid)

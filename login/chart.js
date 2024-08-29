@@ -37,3 +37,8 @@ tracker.addEventListener("click", () => {
   home.classList.remove("active");
   chart.classList.remove("active");
 });
+
+document.getElementById("withdraw")
+  .addEventListener("click", () => {
+    alert("You have not reached the withdrawal limit\n$1000\nMake an investment to reach withdrawal limit")
+  })

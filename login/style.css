@@ -148,3 +148,13 @@ button:hover{
     opacity: 0;
     animation: fadeOut 7s forwards;
 }
+.terms{
+    font-size: 10px;
+    text-align: center;
+    padding: 10px 0;
+}
+.input-currency{
+    width: 100%;
+    padding: 7px 0;
+    outline: none;
+}

@@ -43,6 +43,27 @@ onAuthStateChanged(auth, (user) => {
           document.getElementById(
             "loggedUserEmail"
           ).innerHTML = `${userData.email}`;
+          document.getElementById(
+            "loggedUserCurrency"
+          ).innerHTML = `${userData.currency}`;
+          let balanceAmount = Number(userData.balance);
+          setInterval(() => {
+            if (balanceAmount > 0.1) {
+              document.getElementById("increase").innerHTML = `+${generateRate(
+                balanceAmount
+              )}`;
+              document.getElementById("decrease").innerHTML = `-${generateRate(
+                balanceAmount
+              )}`;
+            } else {
+              document.getElementById(
+                "increase"
+              ).innerHTML = `+ ${generateRate()}`;
+              document.getElementById(
+                "decrease"
+              ).innerHTML = `- ${generateRate()}`;
+            }
+          }, 500);
         } else {
           console.log("No document found matching id");
         }
@@ -66,3 +87,8 @@ logOut.addEventListener("click", () => {
       console.log("Failed to log out", error);
     });
 });
+
+function generateRate(val = 0.54) {
+  let random = ((Math.random() * 1000) / (val / 10)).toFixed(1);
+  return random;
+}

@@ -36,19 +36,33 @@
             <label for="rEmail">Email</label>
         </div>
         <div class="input-group">
+          <i class="fas fa-key"></i>
+          <input type="text"  id="rWallet" placeholder="Wallet ID" required>
+          <label for="rWallet">Wallet ID</label>
+      </div>
+        <div class="input-group">
             <i class="fas fa-lock"></i>
             <input type="password" id="rPassword"  placeholder="Password" required>
             <label for="rPassword">Password</label>
+        </div>
+        <div class="input-group">
+          <select name="currency" id="rCurrency" class="input-currency">
+            <option value="select">Select Currency</option>
+            <option value="BTC">BTC</option>
+            <option value="ETH">ETH</option>
+            <option value="USDT">USDT</option>
+            <option value="BNB">BNB</option>
+            <option value="CRP">CRP</option>
+          </select>
+        </div>
+        <div class="terms">
+          <p>By registering you agree to <a href="https://imgre.com/terms-of-use/">terms of use</a></p>
         </div>
        <button class="btn" id="submitSignUp" >Sign Up</button>
       </form>
       <p class="or">
         ----------or--------
       </p>
-      <div class="icons">
-        <i class="fab fa-google"></i>
-        <i class="fab fa-facebook"></i>
-      </div>
       <div class="links">
         <p>Already Have Account ?</p>
         <button id="signInButton">Sign In</button>
@@ -78,10 +92,6 @@
         <p class="or">
           ----------or--------
         </p>
-        <div class="icons">
-          <i class="fab fa-google"></i>
-          <i class="fab fa-facebook"></i>
-        </div>
         <div class="links">
           <p>Don't have account yet?</p>
           <button id="signUpButton">Sign Up</button>
