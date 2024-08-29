@@ -28,7 +28,9 @@ const db = getFirestore();
 
 onAuthStateChanged(auth, (user) => {
   const loggedInUserId = localStorage.getItem("loggedInUserId");
-  console.log(user.emailVerified);
+  if (user.emailVerification === false) {
+    alert("Email Not verified")
+  } 
   if (loggedInUserId) {
     const docRef = doc(db, "users", loggedInUserId);
     getDoc(docRef)
