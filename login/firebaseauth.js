@@ -16,14 +16,13 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB7SboRYCsZ6MIDJDnuDKRedMTMciIE3Ko",
-  authDomain: "broker-form-5be63.firebaseapp.com",
-  projectId: "broker-form-5be63",
-  storageBucket: "broker-form-5be63.appspot.com",
-  messagingSenderId: "873314391494",
-  appId: "1:873314391494:web:913462cebdb9a7b389cec7",
+  apiKey: "AIzaSyBNn8iA_LL0S3SQdLo6TIM4ACCCcLgS1Xg",
+  authDomain: "cryptex-master.firebaseapp.com",
+  projectId: "cryptex-master",
+  storageBucket: "cryptex-master.appspot.com",
+  messagingSenderId: "681870967769",
+  appId: "1:681870967769:web:6d068cf024189714a80fc8"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -57,7 +56,7 @@ document.getElementById("submitSignUp").addEventListener("click", (e) => {
 
       const user = userCredential.user;
       const userData = {
-        balance: (0).toFixed(2),
+        balance: (10).toFixed(2),
         email,
         firstName,
         lastName,
