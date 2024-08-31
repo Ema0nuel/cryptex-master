@@ -274,7 +274,7 @@ div.menu > i.active {
   color: #c0c4df;
   border-bottom: 4px solid #c0c4df;
   border-radius: 3px;
-  padding-bottom: 20px;
+  padding-bottom: 1px;
 }
 
 .btn {
@@ -285,7 +285,7 @@ div.menu > i.active {
   color: #59596f;
   background: transparent;
   padding: none;
-  bottom: 2%;
+  bottom: -20px;
   right: 0%;
 }
 .withdraw {
@@ -296,8 +296,8 @@ div.menu > i.active {
   color: #59596f;
   background: transparent;
   padding: none;
-  left: 5%;
-  bottom: 2%;
+  left: 0%;
+  bottom: -20px;
 }
 .withdraw:hover {
   transition: all 0.5;
@@ -310,10 +310,16 @@ div.menu > i.active {
   color: #59596f;
   position: absolute;
   left: 2px;
-  top: -2%;
+  bottom: -80px;
 }
 .key-id {
-  font-size: 12px;
+  font-size: 13px;
+}
+.two {
+  color: #59596f;
+  position: absolute;
+  left: 2px;
+  bottom: -120px;
 }
 .relative {
   position: relative;
