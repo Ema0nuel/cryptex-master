@@ -182,11 +182,16 @@ button {
 body {
   font-family: "Nunito", sans-serif;
   background-color: var(--eerie-black-2);
+  background-image: url(../assets/images/back.jpg);
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .nav-section {
   width: 100%;
-  background-color: var(--eerie-black-1);
+  /* background-color: var(--eerie-black-1); */
   color: #fff;
   display: flex;
   flex-direction: row;
@@ -227,6 +232,9 @@ body {
 .nav-btn:hover {
   outline: 0.1rem solid #fff;
   transition: all 0.4s;
+}
+.active-market{
+  background-color: var(--eerie-black-1);
 }
 
 .container {
