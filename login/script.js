@@ -1,14 +1,13 @@
-const signUpButton=document.getElementById('signUpButton');
-const signInButton=document.getElementById('signInButton');
-const signInForm=document.getElementById('signIn');
-const signUpForm=document.getElementById('signup');
+const signUpButton = document.getElementById("signUpButton");
+const signInButton = document.getElementById("signInButton");
+const signInForm = document.getElementById("signIn");
+const signUpForm = document.getElementById("signup");
 
-signUpButton.addEventListener('click',function(){
-    signInForm.style.display="none";
-    signUpForm.style.display="block";
-})
-signInButton.addEventListener('click', function(){
-    signInForm.style.display="block";
-    signUpForm.style.display="none";
-})
-
+signInButton.addEventListener("click", () => {
+  signUpForm.classList.add("hidden");
+  signInForm.classList.remove("hidden");
+});
+signUpButton.addEventListener("click", () => {
+  signUpForm.classList.remove("hidden");
+  signInForm.classList.add("hidden");
+});

@@ -1,99 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register & Login(Cryptex-master)</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="shortcut icon" href="../favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.svg" type="image/x-icon" />
     <script type="module" src="firebaseauth.js"></script>
-</head>
-<body>
-    <div class="container" id="signup" style="display:none;">
-      <h1 class="form-title">Register</h1>
-      <form method="post" action="">
-        <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
+  </head>
+  <body>
+    <div class="container hidden" id="signup">
+      <h1 class="form-title">Join Cryptex <img src="../favicon.svg" /></h1>
+      <form method="post">
         <div class="input-group">
-           <i class="fas fa-user"></i>
-           <input type="text"  id="fName" placeholder="First Name" required>
-           <label for="fname">First Name</label>
+          <label for="fName"><i class="fas fa-user"></i> First Name: </label>
+          <input
+            type="text"
+            name="fName"
+            id="fName"
+            class="text"
+            placeholder="John"
+            required
+          />
         </div>
         <div class="input-group">
-            <i class="fas fa-user"></i>
-            <input type="text"  id="lName" placeholder="Last Name" required>
-            <label for="lName">Last Name</label>
+          <label for="lName"><i class="fas fa-user"></i> Last Name: </label>
+          <input
+            type="text"
+            name="lName"
+            id="lName"
+            class="text"
+            placeholder="Doe"
+            required
+          />
         </div>
         <div class="input-group">
-            <i class="fas fa-envelope"></i>
-            <input type="email"  id="rEmail" placeholder="Email" required>
-            <label for="rEmail">Email</label>
+          <label for="rEmail"><i class="fas fa-envelope"></i> E-mail: </label>
+          <input
+            type="email"
+            name="rEmail"
+            id="rEmail"
+            class="text"
+            placeholder="example@email.com"
+            required
+          />
         </div>
         <div class="input-group">
-          <i class="fas fa-key"></i>
-          <input type="text"  id="rWallet" placeholder="Wallet ID" required>
-          <label for="rWallet">Wallet ID</label>
-      </div>
-        <div class="input-group">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="rPassword"  placeholder="Password" required>
-            <label for="rPassword">Password</label>
+          <label for="rWallet"><i class="fas fa-key"></i> Wallet ID: </label>
+          <input
+            type="text"
+            name="rWallet"
+            id="rWallet"
+            class="text"
+            placeholder="Wallet Address"
+            required
+          />
         </div>
         <div class="input-group">
-          <select name="currency" id="rCurrency" class="input-currency">
+          <label for="rPassword"><i class="fas fa-lock"></i> Password: </label>
+          <input
+            type="password"
+            name="rPassword"
+            id="rPassword"
+            class="text"
+            placeholder="Enter Password"
+          />
+        </div>
+        <div class="input-group">
+          <select name="currency" id="rCurrency" class="text">
             <option value="select">Select Currency</option>
             <option value="BTC">BTC</option>
+            <option value="USD">USD</option>
             <option value="USDT">USDT</option>
           </select>
         </div>
         <div class="terms">
-          <p>By registering you agree to <a href="https://imgre.com/terms-of-use/">terms of use</a></p>
+          <p>
+            By registering you agree to
+            <a href="https://imgre.com/terms-of-use/" class="terms-link">
+              terms of use</a
+            >
+          </p>
         </div>
-       <button class="btn" id="submitSignUp" >Sign Up</button>
+        <button class="btn" id="submitSignUp">Sign Up</button>
       </form>
-      <p class="or">
-        ----------or--------
-      </p>
-      <div class="links">
-        <p>Already Have Account ?</p>
-        <button id="signInButton">Sign In</button>
+      <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
+
+      <p class="or">----------or--------</p>
+
+      <div class="link">
+        <p>Already have an Account?<a id="signInButton">Login</a></p>
       </div>
     </div>
 
-  <div class="container" id="signIn">
-        <h1 class="form-title">Sign In</h1>
-        <form method="post" action="">
-          <div id="signInMessage" class="messageDiv" style="display:none;"></div>
-
-          <div class="input-group">
-              <i class="fas fa-envelope"></i>
-              <input type="email"  id="email" placeholder="Email" required>
-              <label for="email">Email</label>
-          </div>
-          <div class="input-group">
-              <i class="fas fa-lock"></i>
-            <input type="password" id="password"  placeholder="Password" required>
-              <label for="password">Password</label>
-          </div>
-          <!-- <p class="recover">
-            <a href="#">Recover Password</a>
-          </p> -->
-         <button  class="btn"  id="submitSignIn">Sign In</button>
-        </form>
-        <p class="or">
-          ----------or--------
-        </p>
-        <div class="links">
-          <p>Don't have account yet?</p>
-          <button id="signUpButton">Sign Up</button>
-        </div>
+    <div class="container" id="signIn">
+      <div class="img">
+        <img src="../favicon.svg" />
       </div>
-      <script src="script.js"></script>
-</body>
+      <h1 class="form-title-login">Welcome back, sign in</h1>
+      <form method="post">
+        <div id="signInMessage" class="messageDiv" style="display:none;"></div>
+        <div class="input-group">
+          <label for="email"><i class="fas fa-envelope"></i> E-mail: </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="text"
+            placeholder="user@email.com"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="password"><i class="fas fa-key"></i> Password: </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="text"
+            placeholder="Enter Password"
+            required
+          />
+        </div>
+        <button class="btn" id="submitSignIn">Sign In</button>
+      </form>
+      <p class="or">----------or--------</p>
+
+      <div class="link">
+        <p>New to cryptex?<a id="signUpButton">Create an account</a></p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
+<!--
+<div class="container" id="signup" style="display:none;">
+  <h1 class="form-title">Register</h1>
+  <form method="post" action="">
+    <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
+    <div class="input-group">
+       <i class="fas fa-user"></i>
+       <input type="text"  id="fName" placeholder="First Name" required>
+       <label for="fname">First Name</label>
+    </div>
+    <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text"  id="lName" placeholder="Last Name" required>
+        <label for="lName">Last Name</label>
+    </div>
+    <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email"  id="rEmail" placeholder="Email" required>
+        <label for="rEmail">Email</label>
+    </div>
+    <div class="input-group">
+      <i class="fas fa-key"></i>
+      <input type="text"  id="rWallet" placeholder="Wallet ID" required>
+      <label for="rWallet">Wallet ID</label>
+  </div>
+    <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="rPassword"  placeholder="Password" required>
+        <label for="rPassword">Password</label>
+    </div>
+    <div class="input-group">
+      <select name="currency" id="rCurrency" class="input-currency">
+        <option value="select">Select Currency</option>
+        <option value="BTC">BTC</option>
+        <option value="USDT">USDT</option>
+      </select>
+    </div>
+    <div class="terms">
+      <p>By registering you agree to <a href="https://imgre.com/terms-of-use/">terms of use</a></p>
+    </div>
+   <button class="btn" id="submitSignUp" >Sign Up</button>
+  </form>
+  <p class="or">
+    ----------or--------
+  </p>
+  <div class="links">
+    <p>Already Have Account ?</p>
+    <button id="signInButton">Sign In</button>
+  </div>
+</div>
+
+
+<div class="container" id="signIn">
+    <h1 class="form-title">Sign In</h1>
+    <form method="post" action="">
+      <div id="signInMessage" class="messageDiv" style="display:none;"></div>
+
+      <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email"  id="email" placeholder="Email" required>
+          <label for="email">Email</label>
+      </div>
+      <div class="input-group">
+          <i class="fas fa-lock"></i>
+        <input type="password" id="password"  placeholder="Password" required>
+          <label for="password">Password</label>
+      </div>
+       <p class="recover">
+        <a href="#">Recover Password</a>
+      </p> 
+     <button  class="btn"  id="submitSignIn">Sign In</button>
+    </form>
+    <p class="or">
+      ----------or--------
+    </p>
+    <div class="links">
+      <p>Don't have account yet?</p>
+      <button id="signUpButton">Sign Up</button>
+    </div>
+  </div>
+
+-->

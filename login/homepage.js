@@ -39,13 +39,15 @@ onAuthStateChanged(auth, (user) => {
           const userData = docSnap.data();
           document.getElementById(
             "loggedUserFullName"
-          ).innerHTML = `Welcome, ${userData.firstName} ${userData.lastName}`;
+          ).innerHTML = `USER: ${userData.firstName} ${userData.lastName}`;
           document.getElementById(
             "loggedUserBalance"
-          ).innerHTML = `${userData.balance}`;
+          ).innerHTML = `$${userData.balance}`;
           document.getElementById(
             "loggedUserEmail"
-          ).innerHTML = `${userData.email}`;
+          ).innerHTML = `EMAIL: ${userData.email}`;
+          document.getElementById("profit").innerHTML = `$${userData.profit}`
+          document.getElementById("investment").innerHTML = `$${userData.investment}`
           document.getElementById(
             "loggedUserCurrency"
           ).innerHTML = `${userData.currency}`;

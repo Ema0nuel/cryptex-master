@@ -138,212 +138,539 @@ html {
   font-size: 10px;
   scroll-behavior: smooth;
 }
-
-body {
-  font-family: "Nunito", sans-serif;
-  background-image: url(../assets/images/user_bg.jpg);
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin-top: 40px;
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-
-span {
-  color: white;
-}
-
-.container {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  overflow-wrap: break-word;
-  border-radius: 30px;
-  width: 300px;
-  height: 650px;
-  background: linear-gradient(to right, #202140, #2d2e48);
-}
-
-i.logo {
-  color: #c0c4df;
-}
-
-span.account-label {
-  font-size: 14px;
-  color: #747598;
-  font-weight: 700;
-}
-
-span.balance {
-  font-size: 30px;
-  color: #f5f4f1;
-  font-weight: 600;
-}
-
-div.rounded-border {
-  border: 6px solid transparent;
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  border-radius: 30px;
-  position: relative;
-}
-
-.grey-color {
-  background-image: linear-gradient(to top right, #181930 50%, #3b3c58),
-    linear-gradient(145deg, transparent 75%, #3b4065);
-}
-
-.plain-color {
-  z-index: 1;
-  background-image: linear-gradient(to top right, #181930 50%, #3b3c58);
-}
-
-.green-color {
-  background-image: linear-gradient(to top right, #181930 50%, #3b3c58),
-    linear-gradient(145deg, transparent 75%, #00c6c4);
-}
-
-.yellow-color {
-  background-image: linear-gradient(to top right, #181930 50%, #3b3c58),
-    linear-gradient(220deg, transparent 75%, #f5b300);
-}
-
-.yellow-color::before {
-  left: -48px;
-  bottom: -48px;
-  transform: rotate(-45deg);
-  content: "";
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background: conic-gradient(
-    #00c6c40f 0 12.5%,
-    #f5b300af 0 37.5%,
-    #f5b4000f 0 100%
-  );
-  filter: blur(15px);
-}
-
-.green-color::before {
-  right: -98px;
-  bottom: -68px;
-  transform: rotate(225deg);
-  content: "";
-  position: absolute;
-  width: 170px;
-  height: 170px;
-  background: conic-gradient(
-    #00c6c40f 0 12.5%,
-    #00c6c4af 0 37.5%,
-    #00c6c40f 0 100%
-  );
-  filter: blur(30px);
-}
-
-span.currency-name {
-  font-size: 16px;
-  color: #f5f4f1;
-  letter-spacing: 1px;
-}
-
-span.currency-value {
-  font-size: 10px;
-  font-weight: 700;
-  color: #747598;
-}
-
-i.bitcoin {
-  color: #f5b300;
-}
-
-i.ethereum {
-  color: #878faf;
-}
-
-i.ripple {
-  color: #00c6c4;
-}
-
-div.menu > i {
-  color: #494b64;
-  font-size: 1.3em;
-}
-
-div.menu > i.active {
-  color: #c0c4df;
-  border-bottom: 4px solid #c0c4df;
-  border-radius: 3px;
-  padding-bottom: 1px;
-}
-
-.btn {
-  position: absolute;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  color: #59596f;
-  background: transparent;
-  padding: none;
-  bottom: -20px;
-  right: 0%;
-}
-.withdraw {
-  position: absolute;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  color: #59596f;
-  background: transparent;
-  padding: none;
-  left: 0%;
-  bottom: -20px;
-}
-.withdraw:hover {
-  transition: all 0.5;
-  color: #181930;
-}
-.name {
-  text-transform: capitalize;
-}
-.key {
-  color: #59596f;
-  position: absolute;
-  left: 2px;
-  bottom: -80px;
-}
-.key-id {
-  font-size: 13px;
-}
-.two {
-  color: #59596f;
-  position: absolute;
-  left: 2px;
-  bottom: -120px;
-}
-.relative {
-  position: relative;
-}
 .hidden {
   display: none;
 }
-.currency {
-  font-size: 10px;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.increase h1 {
-  color: #3ada62;
-  font-size: 18px;
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a,
+img,
+svg,
+data,
+span,
+button,
+ion-icon {
+  display: block;
+}
+
+img {
+  height: auto;
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: var(--eerie-black-2);
+}
+
+.nav-section {
+  width: 100%;
+  background-color: var(--eerie-black-1);
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  gap: 20px;
+}
+.nav-header {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.nav-header img {
+  width: 20px;
+}
+.nav-link {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.nav-link .nav-btn {
+  color: var(--white_50);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 5px;
+}
+.nav-btn i {
+  width: 100%;
+  font-size: 15px;
+  text-align: center;
+}
+.nav-btn.active {
+  color: var(--white);
+}
+
+.nav-btn:hover {
+  outline: 0.1rem solid #fff;
+  transition: all 0.4s;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  width: 80vw;
+  margin: 0 auto;
+  color: var(--white);
+  background-color: #383838;
+  padding: 20px;
+  gap: 10px;
+}
+.user-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #686868;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 #000;
+}
+.user-balance {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-balance i {
+  font-size: 50px;
+  color: #fff;
+  width: 100%;
+  padding-left: 10px;
+}
+.user-balance span {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  font-size: 30px;
+  font-weight: 600;
+  color: #fdfdfd;
+}
+.user-balance .balance {
+  font-weight: 500;
+  color: #f2f2f2;
+}
+.user-balance p {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  font-size: 12px;
+}
+.user-balance p span {
+  font-size: 12px;
+}
+.user-currency {
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  padding-left: 5px;
+}
+.coin-btc,
+.coin-eth,
+.coin-usd,
+.coin-eur {
+  padding: 5px;
+  height: fit-content;
+  border-radius: 5px;
+  background-color: #e6cea3;
+  border-left: 3px solid #e2a22b;
+}
+.coin-eth {
+  background-color: #9ee0d5;
+  border-left: 3px solid #148572;
+}
+.coin-usd {
+  background-color: #a68cc5;
+  border-left: 3px solid #3c116d;
+}
+.coin-eur {
+  background-color: #cf8a8a;
+  border-left: 3px solid #e02727;
+}
+.increase,
+.decrease {
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.increase h3 {
+  color: #4bd173;
+}
+.decrease h3 {
+  color: #e02727;
+}
+.increase:hover,
+.decrease:hover{
+  box-shadow: 0 2px 5px 1px #1a1717;
+}
+.trade {
+  width: 80%;
+  background-color: #686868;
+  margin: 40px auto auto;
+  height: 600px;
+}
+.event{
+  font-size: 10px;
+}
+.rate {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+/* BTN */
+.btn-tag {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  color: #000;
+}
+.btn i {
+  padding-left: 2px;
+}
+.btn:hover {
+  transition: all 0.4s;
+}
+
+.withdraw {
+  background-color: #5bc7b5;
+}
+.withdraw:hover {
+  background-color: #9ee0d5;
+}
+.log-out {
+  background-color: #d35858;
+}
+.log-out:hover {
+  background-color: #e43232;
+}
+
+.user-container{
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  margin: 10px auto;
+  background-color: #686868;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+.user-icon{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: auto;
+}
+.user-icon img{
+  width: 100px;
+}
+
+.user-container span{
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+}
+.user-email span{
   font-weight: 400;
 }
-.decrease h1 {
-  color: #f10;
-  font-size: 18px;
-  font-weight: 400;
+.deposit{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #383838;
+  border-radius: 10px;
+  padding: 10px;
+}
+.deposit-header{
+  font-size: 16px;
+  font-weight: 500;
+}
+.selected-wallet{
+  margin-bottom: 5px;
+  padding-left: 5px;
+}
+.wallet-address{
+  padding: 10px;
+  border: none;
+  outline: .2rem solid #173ebe;
+ border-radius: 10px;
+ background-color: #a1a1a1;
+}
+
+@media (max-width: 1150px) {
+  .container {
+    width: 100%;
+  }
+  .user-container{
+    width: 300px;
+  }
+  .wallet-address{
+    font-size: 10px;
+    overflow-x: scroll;
+  }
+}
+
+@media (max-width: 950px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
 }
 /* 
 <span id="loggedUserEmail"></span>
 <button id="logout">Logout</button>
 <span id="loggedUserFullName"></span>
 <span id="loggedUserBalance"></span>
+*/
+
+/*
+ <div class="container">
+      <div class="d-flex flex-row pt-5">
+        <i class="fab fa-affiliatetheme logo"></i>
+        <span id="loggedUserEmail"></span>
+      </div>
+
+      <div class="mt-4 d-flex flex-column rounded-border grey-color py-4 px-3">
+        <span id="loggedUserFullName" class="name"></span>
+        <span class="balance">$<span id="loggedUserBalance"></span></span>
+        <span class="currency"><span id="loggedUserCurrency"></span></span>
+      </div>
+
+      <div class="wrapper">
+        <!-- Interest Rate -->
+        <div
+          class="mt-2 d-flex flex-row justify-content-between rounded-border yellow-color px-3 py-4"
+        >
+          <div class="increase">
+            <h1>Increase</h1>
+            <span id="increase"></span>
+          </div>
+          <div class="decrease">
+            <h1>Decrease</h1>
+            <span id="decrease"></span>
+          </div>
+        </div>
+
+        <div
+          class="mt-2 d-flex flex-row justify-content-between rounded-border yellow-color px-3 py-4"
+        >
+          <div class="d-flex flex-column">
+            <span class="currency-name">Bitcoin</span>
+            <span class="currency-value"
+              ><i class="fab fa-bitcoin bitcoin"></i> BTC</span
+            >
+          </div>
+          <div class="d-flex flex-column align-items-end">
+            <span>$3,563.06</span>
+            <span class="currency-value">0.900 BTC</span>
+          </div>
+        </div>
+
+        <div
+          class="mt-2 d-flex flex-row justify-content-between rounded-border plain-color px-3 py-4"
+        >
+          <div class="d-flex flex-column">
+            <span class="currency-name">Ethereum</span>
+            <span class="currency-value"
+              ><i class="fab fa-ethereum ethereum"></i> ETH</span
+            >
+          </div>
+          <div class="d-flex flex-column align-items-end">
+            <span>$2,453.04</span>
+            <span class="currency-value">3.503 ETH</span>
+          </div>
+        </div>
+
+        <div
+          class="mt-2 d-flex flex-row justify-content-between rounded-border green-color px-3 py-4"
+        >
+          <div class="d-flex flex-column">
+            <span class="currency-name">Ripple</span>
+            <span class="currency-value"
+              ><i class="fas fa-dot-circle ripple"></i> XRP</span
+            >
+          </div>
+          <div class="d-flex flex-column align-items-end">
+            <span>$6,356.23</span>
+            <span class="currency-value">1.533 XRP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-map hidden">
+        <!-- TradingView Widget BEGIN -->
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <div class="tradingview-widget-copyright">
+            <a
+              href="https://www.tradingview.com/"
+              rel="noopener nofollow"
+              target="_blank"
+              ><span class="blue-text"
+                >Track all markets on TradingView</span
+              ></a
+            >
+          </div>
+          <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+            async
+          >
+              {
+              "width": "280",
+              "height": "320",
+              "symbol": "NASDAQ:AAPL",
+              "interval": "1",
+              "timezone": "Etc/UTC",
+              "theme": "dark",
+              "style": "9",
+              "locale": "en",
+              "allow_symbol_change": true,
+              "calendar": false,
+              "studies": [
+                "STD;24h%Volume",
+                "STD;Accumulation_Distribution",
+                "STD;Advance%1Decline%1Ratio",
+                "STD;Advance_Decline_Ratio_Bars"
+              ],
+              "support_host": "https://www.tradingview.com"
+            }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+
+      <div class="tracker hidden">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <div class="tradingview-widget-copyright">
+            <a
+              href="https://www.tradingview.com/"
+              rel="noopener nofollow"
+              target="_blank"
+              ><span class="blue-text"
+                >Track all markets on TradingView</span
+              ></a
+            >
+          </div>
+          <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js"
+            async
+          >
+              {
+              "width": "280",
+              "height": "320",
+              "currencies": [
+                "EUR",
+                "USD",
+                "JPY",
+                "GBP",
+                "CHF",
+                "AUD",
+                "CAD",
+                "NZD",
+                "CNY",
+                "TRY",
+                "SEK",
+                "NOK",
+                "DKK",
+                "ZAR",
+                "HKD",
+                "SGD",
+                "THB",
+                "MXN",
+                "IDR",
+                "KRW",
+                "PLN",
+                "ISK",
+                "KWD",
+                "PHP",
+                "MYR",
+                "INR",
+                "TWD",
+                "SAR",
+                "AED",
+                "RUB",
+                "ILS",
+                "ARS",
+                "CLP",
+                "COP",
+                "PEN",
+                "UYU"
+              ],
+              "isTransparent": false,
+              "colorTheme": "dark",
+              "locale": "en",
+              "backgroundColor": "#000000"
+            }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+      <div
+        class="d-flex flex-row menu justify-content-between px-3 py-1 mt-4 relative"
+      >
+        <div class="key">
+          Make Deposit(BTC): <span class="key-id">bc1qhs4w3m6scq7xxhsk4rrj2s0l82uhfrc74k2kpq
+        </span>
+        </div>
+        <div class="two">
+          Make Deposit(USDT): <span class="key-id">TXPU2qH3c2cfYrhRYpXdZtCq6HFugRr85p
+          </span>
+        </div>
+        <i class="fas fa-home active" id="get-home"></i>
+        <i class="fas fa-paper-plane" id="get-tracker"></i>
+        <i class="fas fa-chart-bar" id="get-chart"></i>
+        <button id="logout" class="btn">Logout</button>
+        <button id="withdraw" class="withdraw">withdraw</button>
+      </div>
+    </div>
+
 */

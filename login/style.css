@@ -1,160 +1,216 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:"poppins",sans-serif;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-    background-image: url(../assets/images/user_bg.jpg);
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.container{
-    background:#fff;
-    width:450px;
-    padding:1.5rem;
-    margin:50px auto;
-    border-radius:10px;
-    box-shadow:0 20px 35px rgba(0,0,1,0.9);
-}
-form{
-    margin:0 2rem;
-}
-.form-title{
-    font-size:1.5rem;
-    font-weight:bold;
-    text-align:center;
-    padding:1.3rem;
-    margin-bottom:0.4rem;
-}
-input{
-    color:inherit;
-    width:100%;
-    background-color:transparent;
-    border:none;
-    border-bottom:1px solid #757575;
-    padding-left:1.5rem;
-    font-size:15px;
-}
-.input-group{
-    padding:1% 0;
-    position:relative;
 
+li {
+  list-style: none;
 }
-.input-group i{
-    position:absolute;
-    color:black;
-}
-input:focus{
-    background-color: transparent;
-    outline:transparent;
-    border-bottom:2px solid hsl(327,90%,28%);
-}
-input::placeholder{
-    color:transparent;
-}
-label{
-    color:#757575;
-    position:relative;
-    left:1.2em;
-    top:-1.3em;
-    cursor:auto;
-    transition:0.3s ease all;
-}
-input:focus~label,input:not(:placeholder-shown)~label{
-    top:-3em;
-    color:hsl(327,90%,28%);
-    font-size:15px;
-}
-.recover{
-    text-align:right;
-    font-size:1rem;
-    margin-bottom:1rem;
 
+a {
+  text-decoration: none;
+  color: inherit;
 }
-.recover a{
-    text-decoration:none;
-    color:rgb(125,125,235);
+
+a,
+img,
+svg,
+data,
+span,
+button,
+ion-icon {
+  display: block;
 }
-.recover a:hover{
-    color:blue;
-    text-decoration:underline;
+
+img {
+  height: auto;
 }
-button{
-    font-size:1.1rem;
-    padding:8px 0;
-    border-radius:5px;
-    outline:none;
-    border:none;
-    width:100%;
-    background:rgb(125,125,235);
-    color:white;
-    cursor:pointer;
-    transition:0.9s;
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
 }
-button:hover{
-    background:#07001f;
+body {
+  background-color: hsl(228, 9%, 10%);
+  background-image: url(../assets/images/hero-banner.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
 }
-.or{
-    font-size:1.1rem;
-    margin-top:0.5rem;
-    text-align:center;
+
+.container {
+  position: relative;
+  width: 400px;
+  background-color: #ffff;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 10px;
+  padding: 20px 10px 15px;
+  margin: 6% auto;
+  border-radius: 10px;
+  outline: 0.03rem solid #1366aa;
+  outline-offset: 0.1rem;
+  box-shadow: 0 1.5px 20px 2px #7c7c7c;
 }
-.icons{
-    text-align:center;
+.form-title:hover {
+  transform: scale(0.9);
+  transition: all 0.4s ease-in-out;
 }
-.icons i{
-    color:rgb(125,125,235);
-    padding:0.8rem 1.5rem;
-    border-radius:10px;
-    font-size:1.5rem;
-    cursor:pointer;
-    border:2px solid #dfe9f5;
-    margin:0 15px;
-    transition:1s;
+
+.form-title {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
 }
-.icons i:hover{
-    background:#07001f;
-    font-size:1.6rem;
-    border:2px solid rgb(125,125,235);
+.form-title img {
+  width: 30px;
 }
-.links{
-    display:flex;
-    justify-content:space-around;
-    padding:0 4rem;
-    margin-top:0.9rem;
-    font-weight:bold;
+form {
+  width: 100%;
+  font-size: 13px;
 }
- #signUpButton, #signInButton{
-    color:rgb(125,125,235);
-    border:none;
-    background-color:transparent;
-    font-size:1rem;
-    font-weight:bold;
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
 }
-#signUpButton:hover, #signInButton:hover {
-    text-decoration:underline;
-    color:blue;
-} 
+.input-group label {
+  width: 100%;
+}
+.text {
+  border: none;
+  outline: 1px solid #c9c9c9;
+  padding: 8px 5px;
+  border-radius: 7px;
+}
+.text:focus {
+  transition: all 0.3;
+  outline: 0.125rem solid #1366aa;
+}
+.text::placeholder {
+  color: #c9c9c9;
+  text-transform: capitalize;
+  font-size: 14px;
+}
+select {
+  color: #c9c9c9;
+  margin-top: 10px;
+}
+select option {
+  color: #000;
+}
+.terms {
+  white-space: nowrap;
+  margin: 10px auto;
+}
+.terms p {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.terms p a {
+  text-decoration: underline;
+  color: #1366aa;
+  cursor: pointer;
+}
+.btn {
+  background-color: #1366aa;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  margin-top: 7px;
+  border-radius: 7px;
+}
+.btn:hover {
+  transition: all 0.4s;
+  background-color: #1778c7;
+}
+.or {
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+}
+.link {
+  font-size: 13px;
+  white-space: nowrap;
+  width: 100%;
+}
+.link p {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+.link p a {
+  text-decoration: underline;
+  color: #1366aa;
+  cursor: pointer;
+}
 .messageDiv {
-    background-color: #f10;
-    color: #fff;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 5px;
-    font-size: 1rem;
-    opacity: 0;
-    animation: fadeOut 7s forwards;
+  position: absolute;
+  z-index: 777;
+  background-color: #b83228;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  left: 7vw;
+  top: 0;
+  border: 3px solid #7e2d27;
+  font-size: 12px;
+  border-radius: 6px;
+  transition: all 0.5s;
 }
-.terms{
-    font-size: 10px;
-    text-align: center;
-    padding: 10px 0;
+
+/* SIGN IN */
+.img {
+  width: 100%;
 }
-.input-currency{
+.img img {
+  width: 30px;
+  margin: 0 auto;
+}
+
+.form-title-login {
+  width: 100%;
+  font-size: 15px;
+  text-align: center;
+}
+@media (max-width: 760px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    padding: 7px 0;
-    outline: none;
+    height: 100vh;
+  }
+  .container {
+    width: 300px;
+  }
+}
+
+.hidden {
+  display: none;
 }
