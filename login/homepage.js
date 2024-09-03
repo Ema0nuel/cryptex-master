@@ -46,7 +46,12 @@ onAuthStateChanged(auth, (user) => {
           document.getElementById(
             "loggedUserEmail"
           ).innerHTML = `EMAIL: ${userData.email}`;
-          document.getElementById("profit").innerHTML = `$${userData.profit}`
+          let profitValue = Number(userData.profit);
+          setInterval(() => {
+            let newProfit = generateRate() + profitValue
+            userData.profit += newProfit;
+            document.getElementById("profit").innerHTML = `$${newProfit}`
+          },500)
           document.getElementById("investment").innerHTML = `$${userData.investment}`
           document.getElementById(
             "loggedUserCurrency"
@@ -94,6 +99,6 @@ logOut.addEventListener("click", () => {
 });
 
 function generateRate(val = 0.54) {
-  let random = ((Math.random() * 1000) / (val / 10)).toFixed(1);
+  let random = ((Math.random() * 100) / (val / 10)).toFixed(1);
   return random;
 }
