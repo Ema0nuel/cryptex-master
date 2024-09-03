@@ -51,7 +51,7 @@ onAuthStateChanged(auth, (user) => {
             let newProfit = generateRate() + profitValue
             userData.profit += newProfit;
             document.getElementById("profit").innerHTML = `$${newProfit}`
-          },500)
+          },3000)
           document.getElementById("investment").innerHTML = `$${userData.investment}`
           document.getElementById(
             "loggedUserCurrency"
