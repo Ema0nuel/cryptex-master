@@ -49,9 +49,8 @@ onAuthStateChanged(auth, (user) => {
           let profitValue = Number(userData.profit);
           setInterval(() => {
             let newProfit = generateRate() + profitValue
-            userData.profit += newProfit;
             document.getElementById("profit").innerHTML = `$${newProfit}`
-          },3000)
+          },2000)
           document.getElementById("investment").innerHTML = `$${userData.investment}`
           document.getElementById(
             "loggedUserCurrency"
