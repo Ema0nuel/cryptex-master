@@ -468,6 +468,17 @@ body {
     width: 100%;
   }
 }
+.btn-take{
+  width: 100px;
+  box-shadow: 0 2px 10px 1px #807f7f;
+  outline: .2rem solid #5c5c5c;
+  color: #fff;
+}
+.btn-take:hover{
+  transition: all 0.5s;
+  background-color: #383838;
+  outline: .2rem solid #383838;
+}
 /* 
 <span id="loggedUserEmail"></span>
 <button id="logout">Logout</button>

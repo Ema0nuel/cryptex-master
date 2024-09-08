@@ -25,6 +25,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
+let profitVal = document.getElementById("profit");
+let takeBtn = document.getElementById("take-btn");
+let tradeBtn = document.getElementById("trade-btn");
 
 onAuthStateChanged(auth, (user) => {
   const loggedInUserId = localStorage.getItem("loggedInUserId");
@@ -49,8 +52,13 @@ onAuthStateChanged(auth, (user) => {
           let profitValue = Number(userData.profit);
           setInterval(() => {
             let newProfit = generateRate() + profitValue
-            document.getElementById("profit").innerHTML = `$${newProfit}`
-          },2000)
+            profitVal.innerHTML = `$${newProfit}`;
+          },2000);
+          takeBtn.addEventListener("click", () => {
+            setInterval(() => {
+              console.log(profitVal.innerHTML);
+            },2000)
+          })
           document.getElementById("investment").innerHTML = `$${userData.investment}`
           document.getElementById(
             "loggedUserCurrency"
