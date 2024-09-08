@@ -56,9 +56,9 @@ document.getElementById("submitSignUp").addEventListener("click", (e) => {
 
       const user = userCredential.user;
       const userData = {
-        balance: (10).toFixed(2),
-        profit: (0).toFixed(2),
-        investment: (0).toFixed(2),
+        balance: (balance ? balance : 10.00),
+        profit: 0,
+        investment: (investment ? investment : 0.00),
         email,
         firstName,
         lastName,

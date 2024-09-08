@@ -233,7 +233,7 @@ body {
   outline: 0.1rem solid #fff;
   transition: all 0.4s;
 }
-.active-market{
+.active-market {
   background-color: var(--eerie-black-1);
 }
 
@@ -338,7 +338,7 @@ body {
   color: #e02727;
 }
 .increase:hover,
-.decrease:hover{
+.decrease:hover {
   box-shadow: 0 2px 5px 1px #1a1717;
 }
 .trade {
@@ -347,7 +347,7 @@ body {
   margin: 40px auto auto;
   height: 600px;
 }
-.event{
+.event {
   font-size: 10px;
 }
 .rate {
@@ -393,7 +393,7 @@ body {
   background-color: #e43232;
 }
 
-.user-container{
+.user-container {
   display: flex;
   flex-direction: column;
   width: 450px;
@@ -403,25 +403,25 @@ body {
   border-radius: 10px;
   padding: 10px;
 }
-.user-icon{
+.user-icon {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   margin: auto;
 }
-.user-icon img{
+.user-icon img {
   width: 100px;
 }
 
-.user-container span{
+.user-container span {
   width: 100%;
   text-align: center;
   font-size: 14px;
 }
-.user-email span{
+.user-email span {
   font-weight: 400;
 }
-.deposit{
+.deposit {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -431,30 +431,30 @@ body {
   border-radius: 10px;
   padding: 10px;
 }
-.deposit-header{
+.deposit-header {
   font-size: 16px;
   font-weight: 500;
 }
-.selected-wallet{
+.selected-wallet {
   margin-bottom: 5px;
   padding-left: 5px;
 }
-.wallet-address{
+.wallet-address {
   padding: 10px;
   border: none;
-  outline: .2rem solid #173ebe;
- border-radius: 10px;
- background-color: #a1a1a1;
+  outline: 0.2rem solid #173ebe;
+  border-radius: 10px;
+  background-color: #a1a1a1;
 }
 
 @media (max-width: 1150px) {
   .container {
     width: 100%;
   }
-  .user-container{
+  .user-container {
     width: 300px;
   }
-  .wallet-address{
+  .wallet-address {
     font-size: 10px;
     overflow-x: scroll;
   }
@@ -468,16 +468,38 @@ body {
     width: 100%;
   }
 }
-.btn-take{
+.btn-take {
   width: 100px;
   box-shadow: 0 2px 10px 1px #807f7f;
-  outline: .2rem solid #5c5c5c;
+  outline: 0.2rem solid #5c5c5c;
   color: #fff;
 }
-.btn-take:hover{
+.btn-take:hover {
   transition: all 0.5s;
   background-color: #383838;
-  outline: .2rem solid #383838;
+  outline: 0.2rem solid #383838;
+}
+/* INPUT */
+.text {
+  border: none;
+  outline: 1px solid #c9c9c9;
+  padding: 8px 5px;
+  border-radius: 7px;
+}
+.text:focus {
+  transition: all 0.3;
+  outline: 0.125rem solid #1366aa;
+}
+.text::placeholder {
+  color: #c9c9c9;
+  text-transform: capitalize;
+  font-size: 14px;
+}
+.btn-withdraw{
+  background-color: #148572;
+  width: 100%;
+  outline: none;
+  box-shadow: none;
 }
 /* 
 <span id="loggedUserEmail"></span>

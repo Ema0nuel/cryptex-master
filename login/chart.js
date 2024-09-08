@@ -32,7 +32,7 @@ tradeBtn.addEventListener("click", () => {
   userDiv.classList.add("hidden")
 })
 
-document.getElementById("withdraw")
-  .addEventListener("click", () => {
-    alert("You have not reached withdrawal limit ($1000)\nMake more investment to reach withdrawal limit")
-  })
+// document.getElementById("withdraw")
+//   .addEventListener("click", () => {
+//     alert("You have not reached withdrawal limit ($1000)\nMake more investment to reach withdrawal limit")
+//   })
