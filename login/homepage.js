@@ -95,6 +95,7 @@ onAuthStateChanged(auth, (user) => {
                 document
                   .querySelector(".active-market")
                   .classList.remove("hidden");
+                  document.getElementById("home").classList.add("active")
               } else {
                 let div = document.createElement("div");
                 div.className = "success-container";
