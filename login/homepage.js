@@ -190,7 +190,7 @@ onAuthStateChanged(auth, (user) => {
                   let balance = localStorage.getItem(`${loggedInUserId}-balance`);
                   const userData = {
                     balance: balance ? balance : balVal,
-                    investment: investment ? investment : investmentVal,
+                    investment: investment ? investment : 0,
                   };
                   const docRef = doc(db, "users", user.uid);
                   updateDoc(docRef, userData);
