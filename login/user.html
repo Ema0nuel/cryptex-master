@@ -138,8 +138,12 @@
           <div class="user-balance">
             <i class="fa-solid fa-coins"></i>
             <span><span class="balance" id="profit"></span></span>
-            <p>Profit Balance updates in 60 seconds<span id="loggedUserCurrency"></span></p>
-            <button class="btn btn-take" id="take-btn">Take profit</button>
+            <p>
+              Margin Balance updates in 10 seconds<span
+                id="loggedUserCurrency"
+              ></span>
+            </p>
+            <button class="btn btn-take" id="take-btn">Take Margin</button>
           </div>
           <div class="user-currency">
             <span class="coin coin-btc">BTC</span>
@@ -349,6 +353,84 @@
             TXPU2qH3c2cfYrhRYpXdZtCq6HFugRr85p
           </span>
         </div>
+      </div>
+    </div>
+
+    <div id="withdrawDiv" class="hidden">
+      <div class="flex-container">
+        <div class="input-group"></div>
+        <label for="uName"><i class="fas fa-user"></i> User Name: </label>
+        <input
+          type="text"
+          name="uName"
+          id="uName"
+          class="text"
+          placeholder="User Name"
+          disabled
+        />
+        <div class="input-group">
+          <label for="uWallet"><i class="fas fa-key"></i> Wallet ID: </label>
+          <input
+            type="text"
+            name="uWallet"
+            id="uWallet"
+            class="text"
+            placeholder="Wallet Address"
+            disabled
+          />
+        </div>
+        <div class="input-group">
+          <label for="uCurrency"
+            ><i class="fa-solid fa-coins"></i> User Currency:
+          </label>
+          <input
+            type="text"
+            name="uCurrency"
+            id="uCurrency"
+            class="text"
+            placeholder="User Currency"
+            disabled
+          />
+        </div>
+        <div class="input-group">
+          <label for="uAccount"
+            ><i class="fas fa-lock"></i> Withdraw Amount:
+          </label>
+          <input
+            type="number"
+            name="uAccount"
+            id="uAccount"
+            class="text"
+            placeholder="Withdraw Amount"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="uEmail"
+            ><i class="fas fa-envelope"></i> Withdraw Email:
+          </label>
+          <input
+            type="email"
+            name="uEmail"
+            id="uEmail"
+            class="text"
+            placeholder="User Email"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="vEmail" class="vemail"
+            >Verified Account
+            <input
+              type="checkbox"
+              name="vEmail"
+              id="vEmail"
+              class="checkbox"
+              disabled
+            />
+          </label>
+        </div>
+        <button id="next" class="btn btn-next">Place withdrawal</button>
       </div>
     </div>
 

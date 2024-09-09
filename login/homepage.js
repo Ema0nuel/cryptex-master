@@ -31,13 +31,20 @@ let takeBtn = document.getElementById("take-btn");
 let tradeBtn = document.getElementById("trade-btn");
 let tradeDiv = document.querySelector(".js-invest");
 const withdrawBtn = document.getElementById("withdraw");
-takeBtn.style.cursor = "not-allowed";
-takeBtn.disabled = "true";
+const uWallet = document.getElementById("uWallet");
+const uName = document.getElementById("uName");
+const uAccount = document.getElementById("uAccount");
+const uEmail = document.getElementById("uEmail");
+const uCurrency = document.getElementById("uCurrency");
+const vEmail = document.getElementById("vEmail");
+const nextBtn = document.getElementById("next");
 
 onAuthStateChanged(auth, (user) => {
   const loggedInUserId = localStorage.getItem("loggedInUserId");
   if (user.emailVerified === false) {
     alert("Email not verified");
+  } else {
+    vEmail.setAttribute("checked", "true");
   }
   if (loggedInUserId) {
     const docRef = doc(db, "users", loggedInUserId);
@@ -46,7 +53,9 @@ onAuthStateChanged(auth, (user) => {
         if (docSnap.exists()) {
           const userData = docSnap.data();
           let balVal = userData.balance;
-
+          uName.value = `${userData.firstName} ${userData.lastName}`;
+          uWallet.value = `${userData.wallet}`;
+          uCurrency.value = `${userData.currency}`;
           document.getElementById(
             "loggedUserFullName"
           ).innerHTML = `USER: ${userData.firstName} ${userData.lastName}`;
@@ -64,14 +73,64 @@ onAuthStateChanged(auth, (user) => {
               return;
             }
           });
+          nextBtn.addEventListener("click", () => {
+            let uBalance = localStorage.getItem("new-balance")
+              ? localStorage.getItem("new-balance")
+              : userData.balance;
+            if (uAccount.value === "" || uEmail.value === "") {
+              alert("Fill out the parameters");
+            } else {
+              if (!confirm("Are you sure you want to place a withdrawal?")) {
+                alert("You have cancel withdrawal");
+              } else if (
+                Number(uAccount.value) > Number(uBalance) ||
+                Number(uAccount.value) <= 10
+              ) {
+                alert("Unable to withdraw");
+                uAccount.value = "";
+                uEmail.value = "";
+                document.getElementById("withdrawDiv").classList.add("hidden");
+                withdrawBtn.classList.remove("hidden");
+                document.getElementById("homeDiv").classList.remove("hidden");
+                document
+                  .querySelector(".active-market")
+                  .classList.remove("hidden");
+              } else {
+                let div = document.createElement("div");
+                div.className = "success-container";
+
+                div.innerHTML = `
+                    <div class="success">
+                      <div class="success-img-div">
+                        <img src="../assets/images/success.png" class="success-img" />
+                      </div>
+                      <div class="success-contain">
+                        <p>You have successfully placed a withdrawal of $${uAccount.value}</p>
+                        <p>We would send a mail to ${uEmail.value} in other to complete your KYC.</p>
+                      </div>
+                    </div>
+                  </div>
+                `;
+                document.body.appendChild(div);
+                setTimeout(() => {
+                  document.body.removeChild(div);
+                }, 5000);
+                uAccount.value = "";
+                uEmail.value = "";
+                document.getElementById("withdrawDiv").classList.add("hidden");
+                withdrawBtn.classList.remove("hidden");
+                document.getElementById("homeDiv").classList.remove("hidden");
+                document
+                  .querySelector(".active-market")
+                  .classList.remove("hidden");
+              }
+            }
+          });
           tradeBtn.addEventListener("click", () => {
-            takeBtn.disabled = "false";
             let trade = Number(userData.investment);
             if (trade <= 0) {
               alert("Make an investment to trade");
             } else {
-              tradeBtn.style.cursor = "pointer";
-              takeBtn.style.cursor = "pointer";
               tradeBtn.classList.add("hidden");
               const input = document.createElement("input");
               input.className = "text";
@@ -98,21 +157,27 @@ onAuthStateChanged(auth, (user) => {
                   setInterval(() => {
                     let newProfit = (generateRate() / amountVal).toFixed(1);
                     profitVal.innerHTML = `$${newProfit}`;
-                    if (newProfit < 900) {
+                    if (newProfit < 5.0) {
                       profitVal.style.color = "red";
                     } else {
                       profitVal.style.color = "green";
                     }
                     takeBtn.addEventListener("click", () => {
-                      let val = Number(userData.balance);
+                      let val = Number(balVal);
                       let result = (val += Number(newProfit));
                       let newBalance = result + Number(newProfit);
                       document.getElementById(
                         "loggedUserBalance"
                       ).innerHTML = `$${newBalance.toFixed(1)}`;
                       localStorage.setItem("new-balance", newBalance);
+                      let balance = localStorage.getItem("new-balance");
+                      const userData = {
+                        balance: balance ? balance : balVal,
+                      };
+                      const docRef = doc(db, "users", user.uid);
+                      updateDoc(docRef, userData);
                     });
-                  }, 60000);
+                  }, 3000);
                   button.classList.add("hidden");
                   input.classList.add("hidden");
                   tradeBtn.classList.remove("hidden");
@@ -170,25 +235,6 @@ logOut.addEventListener("click", () => {
 });
 
 function generateRate(val = 0.54) {
-  let random = ((Math.random() * 5) / (val / 10)).toFixed(1);
+  let random = ((Math.random() * 10) / (val / 10)).toFixed(1);
   return random;
 }
-
-withdrawBtn.addEventListener("click", () => {
-  withdrawBtn.classList.add("hidden");
-  const input = document.createElement("input");
-  input.placeholder = "Enter Withdraw Amount";
-  input.type = "number";
-  input.className = "text";
-  const button = document.createElement("button");
-  button.className = "btn btn-take btn-withdraw";
-  button.innerText = "Place Withdrawal";
-  document.querySelector(".btn-tag").appendChild(input);
-  document.querySelector(".btn-tag").appendChild(button);
-  button.addEventListener("click", () => {
-    let value = input.value;
-    alert(
-      `You have not reach the withdrawal limit\nYou placed a withdrawal of ${value} which have not reached the amount.`
-    );
-  });
-});

@@ -187,6 +187,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
 }
 
 .nav-section {
@@ -467,6 +468,9 @@ body {
     gap: 15px;
     width: 100%;
   }
+  .flex-container {
+    width: 300px;
+  }
 }
 .btn-take {
   width: 100px;
@@ -480,27 +484,119 @@ body {
   outline: 0.2rem solid #383838;
 }
 /* INPUT */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
+}
+.input-group label {
+  width: 100%;
+}
 .text {
   border: none;
-  outline: 1px solid #c9c9c9;
+  outline: none;
   padding: 8px 5px;
   border-radius: 7px;
 }
 .text:focus {
   transition: all 0.3;
-  outline: 0.125rem solid #1366aa;
+  border: 0.1rem solid #1b2d3b;
 }
 .text::placeholder {
   color: #c9c9c9;
   text-transform: capitalize;
   font-size: 14px;
 }
-.btn-withdraw{
-  background-color: #148572;
-  width: 100%;
-  outline: none;
-  box-shadow: none;
+select {
+  margin-top: 2px;
+  padding: 10px 0;
 }
+select option {
+  color: #000;
+}
+.flex-container {
+  position: relative;
+  width: 400px;
+  backdrop-filter: blur(50px);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 10px;
+  padding: 20px 10px 15px;
+  margin: 6% auto;
+  border-radius: 10px;
+  outline: none;
+  outline-offset: 0.1rem;
+  box-shadow: 0 1.5px 20px 2px #7c7c7c;
+}
+.vemail {
+  display: flex;
+  gap: 6px;
+  color: #000;
+  font-weight: 600;
+  font-size: 12px;
+}
+.vemail input {
+  padding-top: 4px;
+  border-radius: 50%;
+}
+.btn-next {
+  background-color: #4bd173;
+}
+.btn-next:hover {
+  transition: all 0.4s;
+  background-color: #7aca92;
+}
+.success-container{
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.5s;
+  z-index: 777;
+}
+.success{
+  background-color: #fff;
+  color: #000;
+  width: 350px;
+  padding: 10px;
+  transition: all 0.5s;
+  border-radius: 7px;
+}
+.success-img-div{
+  width: 100%;
+  padding: 10px;
+  transition: all 0.5s;
+}
+.success-img{
+  width: 100px;
+  margin: auto;
+  transition: all 0.5s;
+}
+.success-contain{
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  transition: all 0.5s;
+}
+/*
+.checkbox{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+  */
+
 /* 
 <span id="loggedUserEmail"></span>
 <button id="logout">Logout</button>
