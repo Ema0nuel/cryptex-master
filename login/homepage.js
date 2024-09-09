@@ -38,7 +38,8 @@ const uEmail = document.getElementById("uEmail");
 const uCurrency = document.getElementById("uCurrency");
 const vEmail = document.getElementById("vEmail");
 const nextBtn = document.getElementById("next");
-const investmentSpan = document.getElementById("investment")
+const investmentSpan = document.getElementById("investment");
+let profitHtml = "Trade Ended";
 
 onAuthStateChanged(auth, (user) => {
   const loggedInUserId = localStorage.getItem("loggedInUserId");
@@ -70,7 +71,10 @@ onAuthStateChanged(auth, (user) => {
           // let profitValue = Number(userData.profit);
           profitVal.innerHTML = "No trade";
           takeBtn.addEventListener("click", () => {
-            if (profitVal.innerHTML === "No trade") {
+            if (
+              profitVal.innerHTML === "No trade" ||
+              profitVal.innerHTML === "Trade Ended"
+            ) {
               alert("Trading not started\nMake an investment to start trade");
               return;
             }
@@ -131,7 +135,7 @@ onAuthStateChanged(auth, (user) => {
             }
           });
           tradeBtn.addEventListener("click", () => {
-           let investVal = Number((investmentSpan.innerText).slice(1,));
+            let investVal = Number(investmentSpan.innerText.slice(1));
             let investmentBal = Number(
               localStorage.getItem(`${loggedInUserId}-investment`)
             );
@@ -154,6 +158,7 @@ onAuthStateChanged(auth, (user) => {
               tradeDiv.appendChild(input);
               tradeDiv.appendChild(button);
               button.addEventListener("click", () => {
+                takeBtn.disabled = false;
                 let amountVal = Number(input.value);
                 if (amountVal > trade) {
                   alert("Trade amount beyond investment");
@@ -164,10 +169,13 @@ onAuthStateChanged(auth, (user) => {
                   let investmentHTML = document.getElementById("investment");
                   investmentHTML.innerHTML = `$${trade.toFixed(2)}`;
                   profitVal.innerHTML = `Creating margin...`;
-                  setInterval(() => {
-                    let newProfit = (generateRate() / amountVal).toFixed(1);
+                  const interval = setInterval(() => {
+                    let newProfit = (
+                      generateRate() * amountVal -
+                      amountVal / 2
+                    ).toFixed(1);
                     profitVal.innerHTML = `$${newProfit}`;
-                    if (newProfit < 10.0) {
+                    if (newProfit < 550.0) {
                       profitVal.style.color = "red";
                     } else {
                       profitVal.style.color = "green";
@@ -186,6 +194,10 @@ onAuthStateChanged(auth, (user) => {
                       let balance = localStorage.getItem(
                         `${loggedInUserId}-balance`
                       );
+                      clearInterval(interval)
+                      profitVal.innerHTML = profitHtml
+                      profitVal.style.color = "white"
+                      takeBtn.disabled = true;
                       const userData = {
                         balance: balance ? balance : balVal,
                       };
@@ -252,6 +264,6 @@ logOut.addEventListener("click", () => {
 });
 
 function generateRate(val = 0.54) {
-  let random = ((Math.random() * 10) / (val / 10)).toFixed(1);
+  let random = ((Math.random() * 4) / (val / 10)).toFixed(1);
   return random;
 }
