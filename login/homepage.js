@@ -84,7 +84,7 @@ onAuthStateChanged(auth, (user) => {
                 alert("You have cancel withdrawal");
               } else if (
                 Number(uAccount.value) > Number(uBalance) ||
-                Number(uAccount.value) <= 10
+                Number(uAccount.value) <= 0
               ) {
                 alert("Unable to withdraw");
                 uAccount.value = "";
@@ -123,6 +123,7 @@ onAuthStateChanged(auth, (user) => {
                 document
                   .querySelector(".active-market")
                   .classList.remove("hidden");
+                  document.getElementById("home").classList.add("active")
               }
             }
           });
