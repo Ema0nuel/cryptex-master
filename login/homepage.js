@@ -53,6 +53,7 @@ onAuthStateChanged(auth, (user) => {
         if (docSnap.exists()) {
           const userData = docSnap.data();
           let balVal = userData.balance;
+          let investmentVal = userData.investment;
           uName.value = `${userData.firstName} ${userData.lastName}`;
           uWallet.value = `${userData.wallet}`;
           uCurrency.value = `${userData.currency}`;
@@ -189,7 +190,7 @@ onAuthStateChanged(auth, (user) => {
                   let balance = localStorage.getItem(`${loggedInUserId}-balance`);
                   const userData = {
                     balance: balance ? balance : balVal,
-                    investment: investment ? investment : 0.0,
+                    investment: investment ? investment : investmentVal,
                   };
                   const docRef = doc(db, "users", user.uid);
                   updateDoc(docRef, userData);
