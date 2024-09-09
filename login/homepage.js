@@ -74,8 +74,8 @@ onAuthStateChanged(auth, (user) => {
             }
           });
           nextBtn.addEventListener("click", () => {
-            let uBalance = localStorage.getItem("new-balance")
-              ? localStorage.getItem("new-balance")
+            let uBalance = localStorage.getItem(`${loggedInUserId}-balance`)
+              ? localStorage.getItem(`${loggedInUserId}-balance`)
               : userData.balance;
             if (uAccount.value === "" || uEmail.value === "") {
               alert("Fill out the parameters");
@@ -171,8 +171,8 @@ onAuthStateChanged(auth, (user) => {
                       document.getElementById(
                         "loggedUserBalance"
                       ).innerHTML = `$${newBalance.toFixed(1)}`;
-                      localStorage.setItem("new-balance", newBalance);
-                      let balance = localStorage.getItem("new-balance");
+                      localStorage.setItem(`${loggedInUserId}-balance`, newBalance);
+                      let balance = localStorage.getItem(`${loggedInUserId}-balance`);
                       const userData = {
                         balance: balance ? balance : balVal,
                       };
@@ -184,9 +184,9 @@ onAuthStateChanged(auth, (user) => {
                   input.classList.add("hidden");
                   tradeBtn.classList.remove("hidden");
 
-                  localStorage.setItem("new-investment", trade.toFixed(2));
-                  let investment = localStorage.getItem("new-investment");
-                  let balance = localStorage.getItem("new-balance");
+                  localStorage.setItem(`${loggedInUserId}-investment`, trade.toFixed(2));
+                  let investment = localStorage.getItem(`${loggedInUserId}-investment`);
+                  let balance = localStorage.getItem(`${loggedInUserId}-balance`);
                   const userData = {
                     balance: balance ? balance : balVal,
                     investment: investment ? investment : 0.0,
