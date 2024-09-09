@@ -38,6 +38,7 @@ const uEmail = document.getElementById("uEmail");
 const uCurrency = document.getElementById("uCurrency");
 const vEmail = document.getElementById("vEmail");
 const nextBtn = document.getElementById("next");
+const investmentSpan = document.getElementById("investment")
 
 onAuthStateChanged(auth, (user) => {
   const loggedInUserId = localStorage.getItem("loggedInUserId");
@@ -53,7 +54,7 @@ onAuthStateChanged(auth, (user) => {
         if (docSnap.exists()) {
           const userData = docSnap.data();
           let balVal = userData.balance;
-          let investmentVal = userData.investment;
+          let tradeInvestment = Number(userData.investment);
           uName.value = `${userData.firstName} ${userData.lastName}`;
           uWallet.value = `${userData.wallet}`;
           uCurrency.value = `${userData.currency}`;
@@ -96,7 +97,7 @@ onAuthStateChanged(auth, (user) => {
                 document
                   .querySelector(".active-market")
                   .classList.remove("hidden");
-                  document.getElementById("home").classList.add("active")
+                document.getElementById("home").classList.add("active");
               } else {
                 let div = document.createElement("div");
                 div.className = "success-container";
@@ -108,7 +109,7 @@ onAuthStateChanged(auth, (user) => {
                       </div>
                       <div class="success-contain">
                         <p>You have successfully placed a withdrawal of $${uAccount.value}</p>
-                        <p>We would send a mail to ${uEmail.value} in other to complete your KYC.</p>
+                        <p>We would send a mail to ${uEmail.value} in other to complete your KYC and withdraw your balance.</p>
                       </div>
                     </div>
                   </div>
@@ -125,13 +126,20 @@ onAuthStateChanged(auth, (user) => {
                 document
                   .querySelector(".active-market")
                   .classList.remove("hidden");
-                  document.getElementById("home").classList.add("active")
+                document.getElementById("home").classList.add("active");
               }
             }
           });
           tradeBtn.addEventListener("click", () => {
-            let trade = Number(userData.investment);
-            if (trade <= 0) {
+           let investVal = Number((investmentSpan.innerText).slice(1,));
+            let investmentBal = Number(
+              localStorage.getItem(`${loggedInUserId}-investment`)
+            );
+            let trade =
+              investmentBal || investmentBal != 0
+                ? investmentBal
+                : tradeInvestment;
+            if (trade <= 0 || investVal <= 0) {
               alert("Make an investment to trade");
             } else {
               tradeBtn.classList.add("hidden");
@@ -153,14 +161,13 @@ onAuthStateChanged(auth, (user) => {
                   alert("Enter Valid Amount");
                 } else {
                   trade -= amountVal;
-                  document.getElementById(
-                    "investment"
-                  ).innerHTML = `$${trade.toFixed(2)}`;
+                  let investmentHTML = document.getElementById("investment");
+                  investmentHTML.innerHTML = `$${trade.toFixed(2)}`;
                   profitVal.innerHTML = `Creating margin...`;
                   setInterval(() => {
                     let newProfit = (generateRate() / amountVal).toFixed(1);
                     profitVal.innerHTML = `$${newProfit}`;
-                    if (newProfit < 5.0) {
+                    if (newProfit < 10.0) {
                       profitVal.style.color = "red";
                     } else {
                       profitVal.style.color = "green";
@@ -172,8 +179,13 @@ onAuthStateChanged(auth, (user) => {
                       document.getElementById(
                         "loggedUserBalance"
                       ).innerHTML = `$${newBalance.toFixed(1)}`;
-                      localStorage.setItem(`${loggedInUserId}-balance`, newBalance);
-                      let balance = localStorage.getItem(`${loggedInUserId}-balance`);
+                      localStorage.setItem(
+                        `${loggedInUserId}-balance`,
+                        newBalance
+                      );
+                      let balance = localStorage.getItem(
+                        `${loggedInUserId}-balance`
+                      );
                       const userData = {
                         balance: balance ? balance : balVal,
                       };
@@ -184,14 +196,16 @@ onAuthStateChanged(auth, (user) => {
                   button.classList.add("hidden");
                   input.classList.add("hidden");
                   tradeBtn.classList.remove("hidden");
-
-                  localStorage.setItem(`${loggedInUserId}-investment`, trade.toFixed(2));
-                  let investment = localStorage.getItem(`${loggedInUserId}-investment`);
-                  let balance = localStorage.getItem(`${loggedInUserId}-balance`);
+                  let newVal = Number(investmentHTML.innerText.slice(1));
+                  localStorage.setItem(`${loggedInUserId}-investment`, newVal);
+                  let balance = localStorage.getItem(
+                    `${loggedInUserId}-balance`
+                  );
                   const userData = {
                     balance: balance ? balance : balVal,
-                    investment: investment ? investment : 0,
+                    investment: newVal,
                   };
+                  trade = newVal;
                   const docRef = doc(db, "users", user.uid);
                   updateDoc(docRef, userData);
                 }
