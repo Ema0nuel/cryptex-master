@@ -86,7 +86,7 @@ onAuthStateChanged(auth, (user) => {
                 alert("You have cancel withdrawal");
               } else if (
                 Number(uAccount.value) > Number(uBalance) ||
-                Number(uAccount.value) <= 0
+                Number(uAccount.value) <= 10
               ) {
                 alert("Unable to withdraw");
                 uAccount.value = "";
